@@ -47,10 +47,11 @@ class Hackathon(Base):
     sponsors = Column(Text, nullable=True)
     status = Column(String, default="upcoming")  # 'upcoming', 'ongoing', 'past'
     is_featured = Column(Boolean, default=False)
-    # Landing page configuration
+    
+    # Landing page configuration - Essential fields only
     landing_page_type = Column(String, default="template")  # 'template' or 'custom'
     custom_landing_url = Column(String, nullable=True)
-    landing_color_scheme = Column(String, default="#1976d2")
+    landing_color_scheme = Column(String, default="#1976d2")  # Keep as string for now
     landing_logo_url = Column(String, nullable=True)
     has_sponsors = Column(Boolean, default=False)
     sponsors_data = Column(Text, nullable=True)  # JSON string of sponsor data

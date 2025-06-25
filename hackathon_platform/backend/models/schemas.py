@@ -113,13 +113,13 @@ class HackathonBase(BaseModel):
     evaluation_criteria: Optional[str] = None
     communication_channels: Optional[str] = None
     sponsors: Optional[str] = None
-    # Landing page configuration
+    # Landing page configuration - Essential fields only
     landing_page_type: Optional[str] = "template"
     custom_landing_url: Optional[str] = None
-    landing_color_scheme: Optional[str] = "#1976d2"
+    landing_color_scheme: Optional[str] = "#1976d2"  # Keep as string for now
     landing_logo_url: Optional[str] = None
     has_sponsors: Optional[bool] = False
-    sponsors_data: Optional[str] = None
+    sponsors_data: Optional[str] = None  # JSON string for now
 
 class HackathonCreate(BaseModel):
     name: str
@@ -138,13 +138,13 @@ class HackathonCreate(BaseModel):
     rules: str
     min_team_size: int = 1
     max_team_size: int = 4
-    # Landing page configuration
-    landing_page_type: Optional[str] = "template"  # "template" or "custom"
+    # Landing page configuration - Essential fields only
+    landing_page_type: Optional[str] = "template"
     custom_landing_url: Optional[str] = None
-    landing_color_scheme: Optional[str] = "#1976d2"  # Primary color
+    landing_color_scheme: Optional[str] = "#1976d2"
     landing_logo_url: Optional[str] = None
     has_sponsors: Optional[bool] = False
-    sponsors_data: Optional[str] = None  # JSON string of sponsor logos/names
+    sponsors_data: Optional[str] = None
 
 class HackathonUpdate(BaseModel):
     name: Optional[str] = None
@@ -169,7 +169,7 @@ class HackathonUpdate(BaseModel):
     communication_channels: Optional[str] = None
     sponsors: Optional[str] = None
     status: Optional[str] = None
-    # Landing page configuration
+    # Landing page configuration - Essential fields only
     landing_page_type: Optional[str] = None
     custom_landing_url: Optional[str] = None
     landing_color_scheme: Optional[str] = None
@@ -201,7 +201,7 @@ class HackathonResponse(BaseModel):
     submission_count: int
     created_at: datetime
     updated_at: datetime
-    # Landing page configuration
+    # Landing page configuration - Essential fields only
     landing_page_type: Optional[str] = None
     custom_landing_url: Optional[str] = None
     landing_color_scheme: Optional[str] = None

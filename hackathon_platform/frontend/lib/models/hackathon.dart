@@ -24,12 +24,37 @@ class Hackathon {
   final String? communicationChannels;
   final String? sponsors;
   final bool isFeatured;
+  // Landing page data
   final String? landingPageType;
   final String? customLandingUrl;
-  final String? landingColorScheme;
+  final String? landingPrimaryColor;
+  final String? landingSecondaryColor;
+  final String? landingAccentColor;
   final String? landingLogoUrl;
+  final String? landingLogoPosition;
+  final String? landingHeroBannerUrl;
+  final String? landingHeroOverlayText;
+  final String? landingTypographyHeading;
+  final String? landingTypographyBody;
+  final String? landingBackgroundType;
+  final Map<String, dynamic>? landingBackgroundConfig;
+  final String? landingButtonStyle;
   final bool hasSponsors;
-  final String? sponsorsData;
+  final List<Map<String, dynamic>>? sponsorsData;
+  final List<String>? landingKeyFeatures;
+  final Map<String, dynamic>? landingVenueInfo;
+  final List<String>? landingVenuePhotos;
+  final List<Map<String, dynamic>>? landingFaqData;
+  final Map<String, dynamic>? landingContactInfo;
+  final Map<String, dynamic>? landingSocialMedia;
+  final bool? landingRegistrationPreview;
+  final bool? landingAnalyticsEnabled;
+  final String? landingSeoTitle;
+  final String? landingSeoDescription;
+  final String? landingSeoKeywords;
+  final bool? landingMobileOptimized;
+  final int? landingPageViews;
+  final int? landingRegistrationClicks;
   final Map<String, dynamic>? landingPageConfig;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -61,12 +86,37 @@ class Hackathon {
     this.communicationChannels,
     this.sponsors,
     this.isFeatured = false,
+    // Landing page fields
     this.landingPageType,
     this.customLandingUrl,
-    this.landingColorScheme,
+    this.landingPrimaryColor,
+    this.landingSecondaryColor,
+    this.landingAccentColor,
     this.landingLogoUrl,
+    this.landingLogoPosition,
+    this.landingHeroBannerUrl,
+    this.landingHeroOverlayText,
+    this.landingTypographyHeading,
+    this.landingTypographyBody,
+    this.landingBackgroundType,
+    this.landingBackgroundConfig,
+    this.landingButtonStyle,
     this.hasSponsors = false,
     this.sponsorsData,
+    this.landingKeyFeatures,
+    this.landingVenueInfo,
+    this.landingVenuePhotos,
+    this.landingFaqData,
+    this.landingContactInfo,
+    this.landingSocialMedia,
+    this.landingRegistrationPreview,
+    this.landingAnalyticsEnabled,
+    this.landingSeoTitle,
+    this.landingSeoDescription,
+    this.landingSeoKeywords,
+    this.landingMobileOptimized,
+    this.landingPageViews,
+    this.landingRegistrationClicks,
     this.landingPageConfig,
     required this.createdAt,
     required this.updatedAt,
@@ -105,12 +155,45 @@ class Hackathon {
       communicationChannels: json['communication_channels'],
       sponsors: json['sponsors'],
       isFeatured: json['is_featured'] ?? false,
+      // Landing page fields
       landingPageType: json['landing_page_type'],
       customLandingUrl: json['custom_landing_url'],
-      landingColorScheme: json['landing_color_scheme'],
+      landingPrimaryColor: json['landing_primary_color'],
+      landingSecondaryColor: json['landing_secondary_color'],
+      landingAccentColor: json['landing_accent_color'],
       landingLogoUrl: json['landing_logo_url'],
+      landingLogoPosition: json['landing_logo_position'],
+      landingHeroBannerUrl: json['landing_hero_banner_url'],
+      landingHeroOverlayText: json['landing_hero_overlay_text'],
+      landingTypographyHeading: json['landing_typography_heading'],
+      landingTypographyBody: json['landing_typography_body'],
+      landingBackgroundType: json['landing_background_type'],
+      landingBackgroundConfig: json['landing_background_config'],
+      landingButtonStyle: json['landing_button_style'],
       hasSponsors: json['has_sponsors'] ?? false,
-      sponsorsData: json['sponsors_data'],
+      sponsorsData: json['sponsors_data'] != null
+          ? List<Map<String, dynamic>>.from(json['sponsors_data'])
+          : null,
+      landingKeyFeatures: json['landing_key_features'] != null
+          ? List<String>.from(json['landing_key_features'])
+          : null,
+      landingVenueInfo: json['landing_venue_info'],
+      landingVenuePhotos: json['landing_venue_photos'] != null
+          ? List<String>.from(json['landing_venue_photos'])
+          : null,
+      landingFaqData: json['landing_faq_data'] != null
+          ? List<Map<String, dynamic>>.from(json['landing_faq_data'])
+          : null,
+      landingContactInfo: json['landing_contact_info'],
+      landingSocialMedia: json['landing_social_media'],
+      landingRegistrationPreview: json['landing_registration_preview'],
+      landingAnalyticsEnabled: json['landing_analytics_enabled'],
+      landingSeoTitle: json['landing_seo_title'],
+      landingSeoDescription: json['landing_seo_description'],
+      landingSeoKeywords: json['landing_seo_keywords'],
+      landingMobileOptimized: json['landing_mobile_optimized'],
+      landingPageViews: json['landing_page_views'],
+      landingRegistrationClicks: json['landing_registration_clicks'],
       landingPageConfig: json['landing_page_config'],
       createdAt: DateTime.parse(json['created_at'] ?? DateTime.now().toIso8601String()),
       updatedAt: DateTime.parse(json['updated_at'] ?? DateTime.now().toIso8601String()),

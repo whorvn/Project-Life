@@ -5,6 +5,8 @@ import '../widgets/loading_overlay.dart';
 import '../models/hackathon.dart';
 import 'hackathon_creator_screen.dart';
 import 'hackathon_edit_screen.dart';
+import 'landing_page_configurator_screen.dart';
+import 'hackathon_landing_page_screen.dart';
 
 class HackathonsScreen extends StatefulWidget {
   const HackathonsScreen({super.key});
@@ -75,6 +77,22 @@ class _HackathonsScreenState extends State<HackathonsScreen> {
                         ],
                       ),
                     ),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const LandingPageConfiguratorScreen(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.web),
+                      label: const Text('Design Landing Page'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                        foregroundColor: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
                     ElevatedButton.icon(
                       onPressed: () {
                         Navigator.of(context).push(
@@ -287,7 +305,30 @@ class _HackathonsScreenState extends State<HackathonsScreen> {
                     'End: ${_formatDate(hackathon.endDate)}',
                     style: theme.textTheme.bodySmall,
                   ),
-                  const Spacer(),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => HackathonLandingPageScreen(
+                              hackathonId: hackathon.id,
+                            ),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.web, size: 16),
+                      label: const Text('View Landing Page'),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
                   PopupMenuButton<String>(
                     onSelected: (value) => _handleMenuAction(hackathon, value),
                     itemBuilder: (context) => [
@@ -405,10 +446,11 @@ class _HackathonsScreenState extends State<HackathonsScreen> {
         );
         break;
       case 'preview':
-        // TODO: Implement landing page preview
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Landing page preview coming soon!'),
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => HackathonLandingPageScreen(
+              hackathonId: hackathon.id,
+            ),
           ),
         );
         break;
