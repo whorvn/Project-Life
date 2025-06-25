@@ -399,7 +399,7 @@ class _HackathonsScreenState extends State<HackathonsScreen> {
       case 'edit':
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => HackathonCreatorScreen(hackathon: hackathon),
+            builder: (context) => const HackathonCreatorScreen(),
           ),
         );
         break;

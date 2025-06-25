@@ -1,67 +1,332 @@
-# Flutter/Dart specific
+# ====================
+# IMPORTANT: NEVER IGNORE THESE SOURCE FILES
+# ====================
+# Explicitly include all source code
+!**/lib/**/*.dart
+!**/pubspec.yaml
+!**/pubspec.lock
+!**/analysis_options.yaml
+!**/web/index.html
+!**/web/manifest.json
+!**/web/favicon.png
+!**/web/icons/
+!**/*.py
+!**/requirements.txt
+!**/main.py
+!**/routers/
+!**/models/
+!**/utils/
+!**/README.md
+
+# ====================
+# FLUTTER/DART SPECIFIC
+# ====================
+# Flutter SDK and tool cache
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
-build/
 **/build/
+!**/build.gradle
+!**/build.yaml
 
-# Flutter iOS
+# Flutter generated files
+**/lib/generated_plugin_registrant.dart
+**/*.g.dart
+**/*.freezed.dart
+**/*.mocks.dart
+
+# Flutter iOS specific
 **/ios/Flutter/flutter_assets/
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/.last_build_id
 
-# Flutter Android
-**/android/flutter/
-**/android/app/src/main/java/io/flutter/plugins/
+# Flutter Android specific
+**/android/app/build/
+**/android/.gradle/
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
 
-# Web
-lib/generated_plugin_registrant.dart
+# Flutter Web build output (but keep source!)
+**/web/main.dart.js
+**/web/main.dart.js.map
+**/web/flutter_service_worker.js
+**/web/version.json
+**/web/assets/AssetManifest.json
+**/web/assets/FontManifest.json
+**/web/assets/NOTICES
 
-# Symbolication related
-app.*.symbols
+# ====================
+# PYTHON/BACKEND SPECIFIC
+# ====================
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
 
-# Obfuscation related
-app.*.map.json
+# Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+.python-version
 
-# Environment files
+# Python package management
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Python distribution / packaging
+.Python
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ====================
+# ENVIRONMENT & CONFIG
+# ====================
+# Environment files (keep your secrets safe!)
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
+.env.test
 
-# Hack environment (custom exclusion)
+# Configuration files with sensitive data
+config.json
+secrets.json
+*.key
+*.pem
+*.p12
+*.pfx
+
+# ====================
+# DEVELOPMENT ENVIRONMENTS
+# ====================
+# Hack environment (custom exclusion) - be specific to avoid catching hackathon_platform
 hack/
 **/hack/
 hack.*
-*hack*
+/hack
+# Don't ignore hackathon-related project folders
+!hackathon_platform/
+!*hackathon*/
 
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Conda environments
+.conda/
+conda-meta/
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Node modules (if any web components)
-node_modules/
-
-# Coverage
-coverage/
-
-# Temporary files
-*.tmp
-*.temp
-
+# ====================
+# DATABASE FILES
+# ====================
 # Local database files
 *.db
 *.sqlite
 *.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Database dumps
+*.sql
+*.dump
+
+# ====================
+# IDE & EDITOR FILES
+# ====================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+atlassian-ide-plugin.xml
+
+# Vim/Neovim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ====================
+# OPERATING SYSTEM FILES
+# ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ====================
+# LOGS & TEMPORARY FILES
+# ====================
+# Log files
+*.log
+logs/
+log/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*~.nib
+local.properties
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ====================
+# NODE.JS (if used)
+# ====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.yarn-integrity
+package-lock.json
+yarn.lock
+
+# ====================
+# COVERAGE & TESTING
+# ====================
+coverage/
+.nyc_output
+.coverage
+htmlcov/
+.pytest_cache/
+test-results/
+test-results.xml
+
+# ====================
+# DEPLOYMENT & BUILD ARTIFACTS
+# ====================
+# Docker
+.dockerignore
+Dockerfile.prod
+docker-compose.override.yml
+
+# Deployment scripts
+deploy.sh
+deploy.bat
+
+# Build artifacts
+*.dmg
+*.zip
+*.tar.gz
+*.rar
+
+# ====================
+# PROJECT SPECIFIC EXCLUSIONS
+# ====================
+# Documentation (you mentioned these)
+docs/
+app/
+*.bat
+
+# Backup directories
+backup/
+backups/
+old/
+
+# Sample/demo data (if you don't want to share)
+# sample_data/
+# demo/
+
+# ====================
+# SECURITY & SENSITIVE DATA
+# ====================
+# SSL certificates
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# SSH keys
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pub
+
+# API keys and tokens (be extra careful!)
+**/apikeys.txt
+**/tokens.txt
