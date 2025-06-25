@@ -20,6 +20,9 @@ dependencies:
   # JSON Handling
   json_annotation: ^4.8.1
   
+  # Local Storage
+  shared_preferences: ^2.2.2
+  
   # UI Components & Styling
   google_fonts: ^6.1.0
   flutter_screenutil: ^5.9.0

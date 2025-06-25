@@ -4,6 +4,7 @@ import '../providers/hackathon_provider.dart';
 import '../widgets/loading_overlay.dart';
 import '../models/hackathon.dart';
 import 'hackathon_creator_screen.dart';
+import 'hackathon_edit_screen.dart';
 
 class HackathonsScreen extends StatefulWidget {
   const HackathonsScreen({super.key});
@@ -399,7 +400,7 @@ class _HackathonsScreenState extends State<HackathonsScreen> {
       case 'edit':
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => const HackathonCreatorScreen(),
+            builder: (context) => HackathonEditScreen(hackathon: hackathon),
           ),
         );
         break;

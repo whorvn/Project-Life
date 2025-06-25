@@ -117,12 +117,20 @@ class ApiService {
 
   // Hackathon endpoints
   Future<List<Hackathon>> getHackathons() async {
-    return _handleListRequest(
+    return _handleRequest(
       http.get(
         Uri.parse('${AppConfig.apiBaseUrl}/hackathons/'),
         headers: _headers,
       ),
-      (data) => Hackathon.fromJson(data),
+      (data) {
+        // Backend returns HackathonListResponse with 'hackathons' field
+        if (data['hackathons'] != null && data['hackathons'] is List) {
+          return (data['hackathons'] as List)
+              .map((item) => Hackathon.fromJson(item))
+              .toList();
+        }
+        return <Hackathon>[];
+      },
     );
   }
 

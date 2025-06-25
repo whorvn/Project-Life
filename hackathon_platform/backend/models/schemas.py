@@ -149,14 +149,17 @@ class HackathonCreate(BaseModel):
 class HackathonUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
-    theme: Optional[str] = None
+    type: Optional[str] = None
+    theme_focus_area: Optional[str] = None  # Frontend field name
+    location: Optional[str] = None
     start_date: Optional[datetime] = None
     end_date: Optional[datetime] = None
     application_open: Optional[datetime] = None
     application_close: Optional[datetime] = None
     application_start_date: Optional[datetime] = None
     application_end_date: Optional[datetime] = None
-    prize_pool: Optional[str] = None
+    prize_pool_details: Optional[str] = None  # Frontend field name
+    timezone: Optional[str] = None
     rules: Optional[str] = None
     eligibility: Optional[str] = None
     min_team_size: Optional[int] = None

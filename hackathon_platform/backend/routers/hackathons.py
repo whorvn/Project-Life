@@ -108,11 +108,17 @@ async def get_hackathon(
         hackathon_dict['team_count'] = len(hackathon.teams)
         hackathon_dict['submission_count'] = len(hackathon.submissions)
         
-        # Map field names for frontend compatibility
-        hackathon_dict['prize_pool_details'] = hackathon_dict.get('prize_pool', '')
-        hackathon_dict['theme_focus_area'] = hackathon_dict.get('theme', '')
+        # Map field names for frontend compatibility and ensure required fields have values
+        hackathon_dict['prize_pool_details'] = hackathon_dict.get('prize_pool') or ''
+        hackathon_dict['theme_focus_area'] = hackathon_dict.get('theme') or ''
         hackathon_dict['application_start_date'] = hackathon_dict.get('application_start_date')
         hackathon_dict['application_end_date'] = hackathon_dict.get('application_end_date')
+        
+        # Ensure all required fields have default values if missing
+        if 'prize_pool_details' not in hackathon_dict or hackathon_dict['prize_pool_details'] is None:
+            hackathon_dict['prize_pool_details'] = ''
+        if 'theme_focus_area' not in hackathon_dict or hackathon_dict['theme_focus_area'] is None:
+            hackathon_dict['theme_focus_area'] = ''
         
         return HackathonResponse(**hackathon_dict)
         
@@ -187,11 +193,17 @@ async def create_hackathon(
         hackathon_dict['team_count'] = 0
         hackathon_dict['submission_count'] = 0
         
-        # Map field names for frontend compatibility
-        hackathon_dict['prize_pool_details'] = hackathon_dict.get('prize_pool', '')
-        hackathon_dict['theme_focus_area'] = hackathon_dict.get('theme', '')
+        # Map field names for frontend compatibility and ensure required fields have values
+        hackathon_dict['prize_pool_details'] = hackathon_dict.get('prize_pool') or ''
+        hackathon_dict['theme_focus_area'] = hackathon_dict.get('theme') or ''
         hackathon_dict['application_start_date'] = hackathon_dict.get('application_start_date')
         hackathon_dict['application_end_date'] = hackathon_dict.get('application_end_date')
+        
+        # Ensure all required fields have default values if missing
+        if 'prize_pool_details' not in hackathon_dict or hackathon_dict['prize_pool_details'] is None:
+            hackathon_dict['prize_pool_details'] = ''
+        if 'theme_focus_area' not in hackathon_dict or hackathon_dict['theme_focus_area'] is None:
+            hackathon_dict['theme_focus_area'] = ''
         
         return HackathonResponse(**hackathon_dict)
         
@@ -228,11 +240,21 @@ async def update_hackathon(
                 detail="You can only update your own hackathons"
             )
         
-        # Update fields
+        # Update fields with proper field name mapping
         update_data = hackathon_data.dict(exclude_unset=True)
+        
+        # Field name mappings from frontend to database
+        field_mappings = {
+            'theme_focus_area': 'theme',
+            'prize_pool_details': 'prize_pool'
+        }
+        
         for field, value in update_data.items():
-            if hasattr(hackathon, field):
-                setattr(hackathon, field, value)
+            if value is not None:
+                # Map frontend field names to database field names
+                db_field = field_mappings.get(field, field)
+                if hasattr(hackathon, db_field):
+                    setattr(hackathon, db_field, value)
         
         hackathon.updated_at = datetime.utcnow()
         
@@ -245,6 +267,18 @@ async def update_hackathon(
         hackathon_dict['participant_count'] = len(hackathon.participants)
         hackathon_dict['team_count'] = len(hackathon.teams)
         hackathon_dict['submission_count'] = len(hackathon.submissions)
+        
+        # Map field names for frontend compatibility and ensure required fields have values
+        hackathon_dict['prize_pool_details'] = hackathon_dict.get('prize_pool') or ''
+        hackathon_dict['theme_focus_area'] = hackathon_dict.get('theme') or ''
+        hackathon_dict['application_start_date'] = hackathon_dict.get('application_start_date')
+        hackathon_dict['application_end_date'] = hackathon_dict.get('application_end_date')
+        
+        # Ensure all required fields have default values if missing
+        if 'prize_pool_details' not in hackathon_dict or hackathon_dict['prize_pool_details'] is None:
+            hackathon_dict['prize_pool_details'] = ''
+        if 'theme_focus_area' not in hackathon_dict or hackathon_dict['theme_focus_area'] is None:
+            hackathon_dict['theme_focus_area'] = ''
         
         return HackathonResponse(**hackathon_dict)
         
